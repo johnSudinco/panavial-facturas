@@ -3,10 +3,13 @@ package com.panavial_facturas.panavial_facturas.application.dto;
 import com.panavial_facturas.panavial_facturas.domain.model.Factura;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDateTime;
 
 public record FacturaResponse(
         LocalDateTime fechaEmision,
+        LocalDateTime fechaSri,
+        int idFactFacturas,
         String establecimiento,
         String autorizacion,
         String numeroTransito,
@@ -16,6 +19,8 @@ public record FacturaResponse(
     public static FacturaResponse fromDomain(Factura factura) {
         return new FacturaResponse(
                 factura.getFechaEmision(),
+                factura.getFechaSri(),
+                factura.getIdFactFacturas(),
                 factura.getEstablecimiento(),
                 factura.getAutorizacion(),
                 factura.getNumeroTransito(),

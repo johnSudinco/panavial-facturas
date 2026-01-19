@@ -22,31 +22,40 @@ public class FacturaDwhRepositoryImpl implements FacturaRepositoryPort {
 
     @Override
     public List<Factura> findByRucAndFecha(String ruc, LocalDate fecha) {
-        String rucFijo = "9999999999999";
+        // RUC dinámico del front o RUC de prueba
+        String rucToUse = (ruc != null && !ruc.isBlank()) ? ruc : "9999999999999";
+
         StringBuilder sql = new StringBuilder("""
         SELECT
+            dc.id_dim_cliente,
+            dc.ruc_cliente,
+            dc.nombre_cliente,
+            ff.id_fact_facturas,
             ff.fecha_emision,
             ff.establecimiento,
+            ff.fecha_sri,
             ff.autorizacion,
             ff.numero_transito,
             ff.total
         FROM dm_facturacion.dim_cliente dc
         INNER JOIN dm_facturacion.fact_facturas_old ff
             ON ff.id_dim_cliente = dc.id_dim_cliente
-        WHERE 1=1
-          AND dc.ruc_cliente = ?
+        WHERE dc.ruc_cliente = ?
     """);
 
-        // Lista de parámetros
         List<Object> params = new ArrayList<>();
-        params.add(rucFijo); // RUC fijo
+        params.add(rucToUse);
 
         if (fecha != null) {
-            sql.append(" AND ff.fecha_emision = ?");
-            params.add(fecha);
+            LocalDateTime startOfDay = fecha.atStartOfDay();         // 00:00:00
+            LocalDateTime endOfDay = startOfDay.plusDays(1);        // siguiente día 00:00:00
+            sql.append(" AND ff.fecha_emision >= ? AND ff.fecha_emision < ?");
+            params.add(startOfDay);
+            params.add(endOfDay);
         }
 
-        sql.append(" LIMIT 10");
+        sql.append(" LIMIT 50");
+
         return jdbcTemplate.query(
                 sql.toString(),
                 facturaRowMapper(),
@@ -55,11 +64,11 @@ public class FacturaDwhRepositoryImpl implements FacturaRepositoryPort {
     }
 
 
-
-
     private RowMapper<Factura> facturaRowMapper() {
         return (rs, rowNum) -> new Factura(
                 rs.getTimestamp("fecha_emision").toLocalDateTime(),
+                rs.getTimestamp("fecha_sri").toLocalDateTime(),
+                rs.getInt("id_fact_facturas"),
                 rs.getString("establecimiento"),
                 rs.getString("autorizacion"),
                 rs.getString("numero_transito"),

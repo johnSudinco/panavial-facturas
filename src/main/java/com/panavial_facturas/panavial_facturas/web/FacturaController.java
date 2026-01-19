@@ -27,17 +27,12 @@ public class FacturaController {
 
     @GetMapping
     public ResponseEntity<List<FacturaResponse>> misFacturas(
-            @RequestParam(required = false) LocalDate fecha,
-            Authentication auth
+            @RequestParam(required = false) String ruc,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha
     ) {
-        String username = (auth != null) ? auth.getName() : "ANONYMOUS";
-
         return ResponseEntity.ok(
-                useCase.execute(username, fecha)
+                useCase.execute(ruc, fecha)
         );
     }
-
-
-
 
 }
