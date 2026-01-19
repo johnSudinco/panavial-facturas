@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://192.168.89.34:5432/sudinco
+    username: data.audit
+    password: '%hCwA]D*JpC\F$iP3+'
+
+jwt:
+  secret: 3f8d9a7c2e6b4f1a9d8c7e5f3a2b1c0d
+  expiration: 9000000
+  issuer: idp-panavial-backend
+
+server:
+  port: 9092
