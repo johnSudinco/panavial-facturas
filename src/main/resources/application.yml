@@ -7,9 +7,9 @@ spring:
       driver-class-name: org.postgresql.Driver
 
     mysql:
-      jdbc-url: jdbc:mysql://192.168.61.33:3306/sudinco
-      username: john.arboleda
-      password: 1721523502
+      jdbc-url: jdbc:mysql://192.168.61.9:3306/consultaWeb
+      username: core.user
+      password: 'e7MIK%kTfoXhxi@'
       driver-class-name: com.mysql.cj.jdbc.Driver
 
 jwt:

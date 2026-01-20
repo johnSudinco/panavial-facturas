@@ -7,6 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
@@ -42,4 +43,10 @@ public class MysqlConfig {
             @Qualifier("mysqlEntityManagerFactory") EntityManagerFactory emf) {
         return new JpaTransactionManager(emf);
     }
+    @Bean(name = "mysqlJdbcTemplate")
+    public JdbcTemplate mysqlJdbcTemplate(@Qualifier("mysqlDataSource") DataSource dataSource) {
+        return new JdbcTemplate(dataSource);
+    }
+
+
 }
