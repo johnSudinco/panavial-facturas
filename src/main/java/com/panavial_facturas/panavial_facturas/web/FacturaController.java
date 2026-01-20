@@ -1,7 +1,7 @@
 package com.panavial_facturas.panavial_facturas.web;
 
-import com.panavial_facturas.panavial_facturas.application.dto.FacturaResponse;
-import com.panavial_facturas.panavial_facturas.application.usecase.GetFacturasUseCase;
+import com.panavial_facturas.panavial_facturas.application.dto.postgres.FacturaResponse;
+import com.panavial_facturas.panavial_facturas.application.usecase.postgres.GetFacturasUseCase;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

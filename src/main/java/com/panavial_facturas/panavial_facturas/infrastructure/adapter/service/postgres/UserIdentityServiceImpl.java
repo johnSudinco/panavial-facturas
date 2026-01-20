@@ -1,6 +1,6 @@
-package com.panavial_facturas.panavial_facturas.infrastructure.adapter.service;
+package com.panavial_facturas.panavial_facturas.infrastructure.adapter.service.postgres;
 
-import com.panavial_facturas.panavial_facturas.domain.port.service.UserIdentityService;
+import com.panavial_facturas.panavial_facturas.domain.port.service.postgres.UserIdentityService;
 import com.panavial_facturas.panavial_facturas.infrastructure.adapter.entities.postgres.UserIdentityEntity;
 import com.panavial_facturas.panavial_facturas.infrastructure.adapter.repository.postgres.JpaUserIdentityRepository;
 import org.springframework.stereotype.Service;

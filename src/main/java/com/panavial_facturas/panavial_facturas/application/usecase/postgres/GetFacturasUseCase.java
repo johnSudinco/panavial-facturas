@@ -1,12 +1,10 @@
-package com.panavial_facturas.panavial_facturas.application.usecase;
+package com.panavial_facturas.panavial_facturas.application.usecase.postgres;
 
-import com.panavial_facturas.panavial_facturas.application.dto.FacturaResponse;
-import com.panavial_facturas.panavial_facturas.domain.port.repository.FacturaRepositoryPort;
-import com.panavial_facturas.panavial_facturas.domain.port.service.UserIdentityService;
+import com.panavial_facturas.panavial_facturas.application.dto.postgres.FacturaResponse;
+import com.panavial_facturas.panavial_facturas.domain.port.repository.postgres.FacturaRepositoryPort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service

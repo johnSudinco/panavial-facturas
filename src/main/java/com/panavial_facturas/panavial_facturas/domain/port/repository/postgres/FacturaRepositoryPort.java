@@ -1,4 +1,4 @@
-package com.panavial_facturas.panavial_facturas.domain.port.repository;
+package com.panavial_facturas.panavial_facturas.domain.port.repository.postgres;
 
 import com.panavial_facturas.panavial_facturas.domain.model.postgres.Factura;
 

@@ -1,4 +1,4 @@
-package com.panavial_facturas.panavial_facturas.application.dto;
+package com.panavial_facturas.panavial_facturas.application.dto.postgres;
 
 import com.panavial_facturas.panavial_facturas.domain.model.postgres.Factura;
 

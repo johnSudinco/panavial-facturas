@@ -1,7 +1,7 @@
 package com.panavial_facturas.panavial_facturas.infrastructure.adapter.repository.postgres;
 
 import com.panavial_facturas.panavial_facturas.domain.model.postgres.Factura;
-import com.panavial_facturas.panavial_facturas.domain.port.repository.FacturaRepositoryPort;
+import com.panavial_facturas.panavial_facturas.domain.port.repository.postgres.FacturaRepositoryPort;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
