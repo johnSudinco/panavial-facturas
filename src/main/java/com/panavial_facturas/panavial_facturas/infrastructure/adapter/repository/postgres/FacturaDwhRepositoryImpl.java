@@ -25,8 +25,6 @@ public class FacturaDwhRepositoryImpl implements FacturaRepositoryPort {
 
     @Override
     public List<Factura> findByRucAndFecha(String ruc, LocalDate fecha) {
-        // RUC dinámico del front o RUC de prueba
-        String rucToUse = (ruc != null && !ruc.isBlank()) ? ruc : "9999999999999";
 
         StringBuilder sql = new StringBuilder("""
         SELECT
@@ -44,7 +42,7 @@ public class FacturaDwhRepositoryImpl implements FacturaRepositoryPort {
             ff.clave_acceso,
             ff.numero_secuencial,
             ff.id_dim_peaje,
-            ff.id_dim_concesion            
+            ff.id_dim_concesion
         FROM dm_facturacion.dim_cliente dc
         INNER JOIN dm_facturacion.fact_facturas_old ff
             ON ff.id_dim_cliente = dc.id_dim_cliente
@@ -52,22 +50,68 @@ public class FacturaDwhRepositoryImpl implements FacturaRepositoryPort {
     """);
 
         List<Object> params = new ArrayList<>();
-        params.add(rucToUse);
+        params.add(ruc);
 
         if (fecha != null) {
-            LocalDateTime startOfDay = fecha.atStartOfDay();         // 00:00:00
-            LocalDateTime endOfDay = startOfDay.plusDays(1);        // siguiente día 00:00:00
+            LocalDateTime start = fecha.atStartOfDay();
+            LocalDateTime end = start.plusDays(1);
             sql.append(" AND ff.fecha_emision >= ? AND ff.fecha_emision < ?");
-            params.add(startOfDay);
-            params.add(endOfDay);
+            params.add(start);
+            params.add(end);
         }
 
-        sql.append(" LIMIT 50");
+        sql.append(" ORDER BY ff.fecha_emision DESC LIMIT 50");
 
         return jdbcTemplate.query(
                 sql.toString(),
                 facturaRowMapper(),
                 params.toArray()
+        );
+    }
+
+    @Override
+    public List<Factura> findByFecha(LocalDate fecha) {
+
+        if (fecha == null) {
+            throw new IllegalArgumentException(
+                    "La fecha es obligatoria para consultas ADMIN"
+            );
+        }
+
+        String sql = """
+        SELECT
+            dc.id_dim_cliente,
+            dc.ruc_cliente,
+            dc.nombre_cliente,
+            ff.id_fact_facturas,
+            ff.fecha_emision,
+            ff.establecimiento,
+            ff.fecha_sri,
+            ff.autorizacion,
+            ff.numero_transito,
+            ff.total,
+            ff.punto_emision,
+            ff.clave_acceso,
+            ff.numero_secuencial,
+            ff.id_dim_peaje,
+            ff.id_dim_concesion
+        FROM dm_facturacion.dim_cliente dc
+        INNER JOIN dm_facturacion.fact_facturas_old ff
+            ON ff.id_dim_cliente = dc.id_dim_cliente
+        WHERE ff.fecha_emision >= ?
+          AND ff.fecha_emision < ?
+        ORDER BY ff.fecha_emision DESC
+        LIMIT 100
+    """;
+
+        LocalDateTime start = fecha.atStartOfDay();
+        LocalDateTime end = start.plusDays(1);
+
+        return jdbcTemplate.query(
+                sql,
+                facturaRowMapper(),
+                start,
+                end
         );
     }
 

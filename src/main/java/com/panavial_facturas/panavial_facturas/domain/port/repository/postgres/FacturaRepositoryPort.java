@@ -7,8 +7,14 @@ import java.util.List;
 
 public interface FacturaRepositoryPort {
 
+    // USER
     List<Factura> findByRucAndFecha(
             String ruc,
+            LocalDate fechaEmision
+    );
+
+    // ADMIN
+    List<Factura> findByFecha(
             LocalDate fechaEmision
     );
 }

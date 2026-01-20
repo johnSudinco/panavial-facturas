@@ -8,8 +8,8 @@ spring:
 
     mysql:
       jdbc-url: jdbc:mysql://192.168.61.9:3306/consultaWeb
-      username: core.user
-      password: 'e7MIK%kTfoXhxi@'
+      username: core.user.back
+      password: 'JyVB1MHm?3VJ8;'
       driver-class-name: com.mysql.cj.jdbc.Driver
 
 jwt:

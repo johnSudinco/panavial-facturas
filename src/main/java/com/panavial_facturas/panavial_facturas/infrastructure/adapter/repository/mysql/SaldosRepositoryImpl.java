@@ -59,6 +59,36 @@ public class SaldosRepositoryImpl implements SaldosRepositoryPort {
                 params.toArray()
         );
     }
+    @Override
+    public List<Saldos> findByFechaRange(
+            LocalDate fechaInicio,
+            LocalDate fechaFin
+    ) {
+        if (fechaInicio == null || fechaFin == null) {
+            throw new IllegalArgumentException(
+                    "Las fechas son obligatorias para consultas ADMIN"
+            );
+        }
+
+        String sql = """
+        SELECT 
+            tracli, tranombre, tradocumento,
+            trafecha, trahora,
+            trafectran, trahoratra, traestacion, travia, tratoperacion,
+            traplaca, tradispositivo, tracategoria, tralecman, traval,
+            trasaldo, trafactu
+        FROM consultaWeb.transac
+        WHERE trafecha BETWEEN ? AND ?
+        LIMIT 10000
+    """;
+
+        return jdbcTemplate.query(
+                sql,
+                saldosRowMapper(),
+                fechaInicio,
+                fechaFin
+        );
+    }
 
     private RowMapper<Saldos> saldosRowMapper() {
         return (rs, rowNum) -> {

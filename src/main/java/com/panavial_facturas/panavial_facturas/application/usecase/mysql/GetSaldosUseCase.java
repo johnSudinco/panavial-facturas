@@ -13,10 +13,28 @@ public class GetSaldosUseCase {
     public GetSaldosUseCase(SaldosRepositoryPort saldosRepositoryPort){
         this.saldosRepositoryPort= saldosRepositoryPort;
     }
-    public List<SaldosResponse> execute(String ruc, LocalDate fechaInicio, LocalDate fechaFin) {
-        return saldosRepositoryPort.findByRucAndFechaRange(ruc, fechaInicio, fechaFin)
-                .stream()
+    public List<SaldosResponse> execute(
+            String ruc,
+            LocalDate fechaInicio,
+            LocalDate fechaFin
+    ) {
+        if (ruc == null) {
+            // ADMIN
+            return saldosRepositoryPort.findByFechaRange(fechaInicio, fechaFin)
+                    .stream()
+                    .map(SaldosResponse::fromDomain)
+                    .toList();
+        }
+
+        // USER
+        return saldosRepositoryPort.findByRucAndFechaRange(
+                        ruc,
+                        fechaInicio,
+                        fechaFin
+                ).stream()
                 .map(SaldosResponse::fromDomain)
                 .toList();
     }
+
+
 }

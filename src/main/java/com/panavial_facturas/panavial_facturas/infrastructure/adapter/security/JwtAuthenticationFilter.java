@@ -25,24 +25,39 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request,
-                                    HttpServletResponse response,
-                                    FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(
+            HttpServletRequest request,
+            HttpServletResponse response,
+            FilterChain filterChain
+    ) throws ServletException, IOException {
 
         String authHeader = request.getHeader("Authorization");
+
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             String token = authHeader.substring(7);
 
             try {
                 Claims claims = jwtService.parseToken(token);
-                Long userId = Long.valueOf(claims.getSubject());
 
+                Long userId = Long.valueOf(claims.getSubject());
+                String identification = claims.get("identification", String.class);
+
+                List<SimpleGrantedAuthority> authorities =
+                        ((List<?>) claims.getOrDefault("roles", List.of()))
+                                .stream()
+                                .map(Object::toString)
+                                .map(r -> "ROLE_" + r)
+                                .map(SimpleGrantedAuthority::new)
+                                .toList();
+
+                AuthenticatedUser principal =
+                        new AuthenticatedUser(userId, identification);
 
                 UsernamePasswordAuthenticationToken authToken =
                         new UsernamePasswordAuthenticationToken(
-                                userId,
+                                principal,
                                 null,
-                                List.of(new SimpleGrantedAuthority("USER"))
+                                authorities
                         );
 
                 SecurityContextHolder.getContext().setAuthentication(authToken);
@@ -55,5 +70,4 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         filterChain.doFilter(request, response);
     }
-
 }
