@@ -15,7 +15,12 @@ public class FacturaMapper {
                 entity.getEstablecimiento(),
                 entity.getAutorizacion(),
                 entity.getNumeroTransito(),
-                entity.getTotal()
+                entity.getTotal(),
+                entity.getPuntoEmision(),
+                entity.getClaveAcceso(),
+                entity.getNumeroSecuencial(),
+                entity.getIdDimPeaje(),
+                entity.getIdDimConcesion()
         );
     }
 

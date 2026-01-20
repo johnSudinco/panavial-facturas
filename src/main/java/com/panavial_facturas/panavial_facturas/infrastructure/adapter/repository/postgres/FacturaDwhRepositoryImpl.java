@@ -37,7 +37,12 @@ public class FacturaDwhRepositoryImpl implements FacturaRepositoryPort {
             ff.fecha_sri,
             ff.autorizacion,
             ff.numero_transito,
-            ff.total
+            ff.total,
+            ff.punto_emision,
+            ff.clave_acceso,
+            ff.numero_secuencial,
+            ff.id_dim_peaje,
+            ff.id_dim_concesion            
         FROM dm_facturacion.dim_cliente dc
         INNER JOIN dm_facturacion.fact_facturas_old ff
             ON ff.id_dim_cliente = dc.id_dim_cliente
@@ -77,7 +82,12 @@ public class FacturaDwhRepositoryImpl implements FacturaRepositoryPort {
                     rs.getString("establecimiento"),
                     rs.getString("autorizacion"),
                     rs.getString("numero_transito"),
-                    rs.getBigDecimal("total")
+                    rs.getBigDecimal("total"),
+                    rs.getString("punto_emision"),
+                    rs.getString("clave_acceso"),
+                    rs.getInt("numero_secuencial"),
+                    rs.getInt("id_dim_peaje"),
+                    rs.getInt("id_dim_concesion")
             );
         };
     }

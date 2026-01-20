@@ -12,7 +12,12 @@ public record FacturaResponse(
         String establecimiento,
         String autorizacion,
         String numeroTransito,
-        BigDecimal total
+        BigDecimal total,
+        String puntoEmision,
+        String claveAcceso,
+        int numeroSecuencial,
+        int idDimPeaje,
+        int idDimConcesion
 ) {
 
     public static FacturaResponse fromDomain(Factura factura) {
@@ -23,7 +28,12 @@ public record FacturaResponse(
                 factura.getEstablecimiento(),
                 factura.getAutorizacion(),
                 factura.getNumeroTransito(),
-                factura.getTotal()
+                factura.getTotal(),
+                factura.getPuntoEmision(),
+                factura.getClaveAcceso(),
+                factura.getNumeroSecuencial(),
+                factura.getIdDimPeaje(),
+                factura.getIdDimConcesion()
         );
     }
 }

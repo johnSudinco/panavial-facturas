@@ -33,4 +33,19 @@ public class FacturaEntity {
 
     @Column(name = "total")
     private BigDecimal total;
+
+    @Column(name = "punto_emision")
+    private String puntoEmision;
+
+    @Column(name = "clave_acceso")
+    private String claveAcceso;
+
+    @Column(name = "numero_secuencial")
+    private Integer numeroSecuencial;
+
+    @Column(name = "id_dim_peaje")
+    private Integer idDimPeaje;
+
+    @Column(name = "id_dim_concesion")
+    private Integer idDimConcesion;
 }
