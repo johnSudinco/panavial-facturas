@@ -1,8 +1,16 @@
 spring:
   datasource:
-    url: jdbc:postgresql://192.168.89.34:5432/sudinco
-    username: data.audit
-    password: '%hCwA]D*JpC\F$iP3+'
+    postgres:
+      jdbc-url: jdbc:postgresql://192.168.89.34:5432/sudinco
+      username: data.audit
+      password: '%hCwA]D*JpC\F$iP3+'
+      driver-class-name: org.postgresql.Driver
+
+    mysql:
+      jdbc-url: jdbc:mysql://192.168.61.33:3306/sudinco
+      username: john.arboleda
+      password: 1721523502
+      driver-class-name: com.mysql.cj.jdbc.Driver
 
 jwt:
   secret: 3f8d9a7c2e6b4f1a9d8c7e5f3a2b1c0d

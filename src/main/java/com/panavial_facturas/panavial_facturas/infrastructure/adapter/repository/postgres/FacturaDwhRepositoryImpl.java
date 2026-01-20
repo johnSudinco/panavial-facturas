@@ -1,11 +1,12 @@
-package com.panavial_facturas.panavial_facturas.infrastructure.adapter.repository;
+package com.panavial_facturas.panavial_facturas.infrastructure.adapter.repository.postgres;
 
-import com.panavial_facturas.panavial_facturas.domain.model.Factura;
+import com.panavial_facturas.panavial_facturas.domain.model.postgres.Factura;
 import com.panavial_facturas.panavial_facturas.domain.port.repository.FacturaRepositoryPort;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -65,15 +66,21 @@ public class FacturaDwhRepositoryImpl implements FacturaRepositoryPort {
 
 
     private RowMapper<Factura> facturaRowMapper() {
-        return (rs, rowNum) -> new Factura(
-                rs.getTimestamp("fecha_emision").toLocalDateTime(),
-                rs.getTimestamp("fecha_sri").toLocalDateTime(),
-                rs.getInt("id_fact_facturas"),
-                rs.getString("establecimiento"),
-                rs.getString("autorizacion"),
-                rs.getString("numero_transito"),
-                rs.getBigDecimal("total")
-        );
+        return (rs, rowNum) -> {
+            Timestamp fechaEmisionTs = rs.getTimestamp("fecha_emision");
+            Timestamp fechaSriTs = rs.getTimestamp("fecha_sri");
+
+            return new Factura(
+                    fechaEmisionTs != null ? fechaEmisionTs.toLocalDateTime() : null,
+                    fechaSriTs != null ? fechaSriTs.toLocalDateTime() : null,
+                    rs.getInt("id_fact_facturas"),
+                    rs.getString("establecimiento"),
+                    rs.getString("autorizacion"),
+                    rs.getString("numero_transito"),
+                    rs.getBigDecimal("total")
+            );
+        };
     }
+
 }
 

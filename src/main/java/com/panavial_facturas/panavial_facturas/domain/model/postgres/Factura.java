@@ -1,7 +1,6 @@
-package com.panavial_facturas.panavial_facturas.domain.model;
+package com.panavial_facturas.panavial_facturas.domain.model.postgres;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.time.LocalDateTime;
 
 public class Factura {

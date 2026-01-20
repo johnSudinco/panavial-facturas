@@ -1,4 +1,4 @@
-package com.panavial_facturas.panavial_facturas.infrastructure.adapter.entities;
+package com.panavial_facturas.panavial_facturas.infrastructure.adapter.entities.postgres;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

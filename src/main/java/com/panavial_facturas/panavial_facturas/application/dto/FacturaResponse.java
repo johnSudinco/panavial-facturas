@@ -1,9 +1,8 @@
 package com.panavial_facturas.panavial_facturas.application.dto;
 
-import com.panavial_facturas.panavial_facturas.domain.model.Factura;
+import com.panavial_facturas.panavial_facturas.domain.model.postgres.Factura;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.time.LocalDateTime;
 
 public record FacturaResponse(

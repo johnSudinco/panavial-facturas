@@ -1,9 +1,8 @@
 package com.panavial_facturas.panavial_facturas.domain.port.repository;
 
-import com.panavial_facturas.panavial_facturas.domain.model.Factura;
+import com.panavial_facturas.panavial_facturas.domain.model.postgres.Factura;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 public interface FacturaRepositoryPort {
