@@ -51,7 +51,7 @@ public class SaldosRepositoryImpl implements SaldosRepositoryPort {
             params.add(fechaFin);
         }
 
-        sql.append(" ORDER BY trafecha, trahora LIMIT 100");
+        sql.append(" ORDER BY trafecha, trahora");
 
         return jdbcTemplate.query(
                 sql.toString(),
@@ -79,7 +79,6 @@ public class SaldosRepositoryImpl implements SaldosRepositoryPort {
             trasaldo, trafactu
         FROM consultaWeb.transac
         WHERE trafecha BETWEEN ? AND ?
-        LIMIT 10000
     """;
 
         return jdbcTemplate.query(

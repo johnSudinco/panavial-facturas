@@ -60,7 +60,7 @@ public class FacturaDwhRepositoryImpl implements FacturaRepositoryPort {
             params.add(end);
         }
 
-        sql.append(" ORDER BY ff.fecha_emision DESC LIMIT 50");
+        sql.append(" ORDER BY ff.fecha_emision DESC");
 
         return jdbcTemplate.query(
                 sql.toString(),
@@ -101,7 +101,6 @@ public class FacturaDwhRepositoryImpl implements FacturaRepositoryPort {
         WHERE ff.fecha_emision >= ?
           AND ff.fecha_emision < ?
         ORDER BY ff.fecha_emision DESC
-        LIMIT 100
     """;
 
         LocalDateTime start = fecha.atStartOfDay();
