@@ -24,14 +24,17 @@ public class FacturaDwhRepositoryImpl implements FacturaRepositoryPort {
 
 
     @Override
-    public List<Factura> findByRucAndFecha(String ruc, LocalDate fecha) {
+    public List<Factura> findByRucAndFecha(
+            String ruc,
+            LocalDate fechaInicio,
+            LocalDate fechaFin
+    ) {
 
         StringBuilder sql = new StringBuilder("""
         SELECT
             dc.id_dim_cliente,
             dc.ruc_cliente,
             dc.nombre_cliente,
-            ff.id_fact_facturas,
             ff.fecha_emision,
             ff.establecimiento,
             ff.fecha_sri,
@@ -44,7 +47,7 @@ public class FacturaDwhRepositoryImpl implements FacturaRepositoryPort {
             ff.id_dim_peaje,
             ff.id_dim_concesion
         FROM dm_facturacion.dim_cliente dc
-        INNER JOIN dm_facturacion.fact_facturas_old ff
+        INNER JOIN dm_facturacion.fact_facturas ff
             ON ff.id_dim_cliente = dc.id_dim_cliente
         WHERE dc.ruc_cliente = ?
     """);
@@ -52,15 +55,17 @@ public class FacturaDwhRepositoryImpl implements FacturaRepositoryPort {
         List<Object> params = new ArrayList<>();
         params.add(ruc);
 
-        if (fecha != null) {
-            LocalDateTime start = fecha.atStartOfDay();
-            LocalDateTime end = start.plusDays(1);
-            sql.append(" AND ff.fecha_emision >= ? AND ff.fecha_emision < ?");
-            params.add(start);
-            params.add(end);
-        }
+        LocalDateTime start = fechaInicio.atStartOfDay();
+        LocalDateTime end = fechaFin.plusDays(1).atStartOfDay();
 
-        sql.append(" ORDER BY ff.fecha_emision DESC");
+        sql.append("""
+        AND ff.fecha_emision >= ?
+        AND ff.fecha_emision < ?
+        ORDER BY ff.fecha_emision DESC
+    """);
+
+        params.add(start);
+        params.add(end);
 
         return jdbcTemplate.query(
                 sql.toString(),
@@ -69,12 +74,13 @@ public class FacturaDwhRepositoryImpl implements FacturaRepositoryPort {
         );
     }
 
-    @Override
-    public List<Factura> findByFecha(LocalDate fecha) {
 
-        if (fecha == null) {
+    @Override
+    public List<Factura> findByFecha(LocalDate fechaInicio, LocalDate fechaFin) {
+
+        if (fechaInicio == null || fechaFin == null) {
             throw new IllegalArgumentException(
-                    "La fecha es obligatoria para consultas ADMIN"
+                    "Las fechas son obligatorias para consultas ADMIN"
             );
         }
 
@@ -83,7 +89,7 @@ public class FacturaDwhRepositoryImpl implements FacturaRepositoryPort {
             dc.id_dim_cliente,
             dc.ruc_cliente,
             dc.nombre_cliente,
-            ff.id_fact_facturas,
+            ff.id_dim_cliente,
             ff.fecha_emision,
             ff.establecimiento,
             ff.fecha_sri,
@@ -96,15 +102,15 @@ public class FacturaDwhRepositoryImpl implements FacturaRepositoryPort {
             ff.id_dim_peaje,
             ff.id_dim_concesion
         FROM dm_facturacion.dim_cliente dc
-        INNER JOIN dm_facturacion.fact_facturas_old ff
+        INNER JOIN dm_facturacion.fact_facturas ff
             ON ff.id_dim_cliente = dc.id_dim_cliente
         WHERE ff.fecha_emision >= ?
           AND ff.fecha_emision < ?
         ORDER BY ff.fecha_emision DESC
     """;
 
-        LocalDateTime start = fecha.atStartOfDay();
-        LocalDateTime end = start.plusDays(1);
+        LocalDateTime start = fechaInicio.atStartOfDay();
+        LocalDateTime end = fechaFin.plusDays(1).atStartOfDay();
 
         return jdbcTemplate.query(
                 sql,
@@ -115,6 +121,7 @@ public class FacturaDwhRepositoryImpl implements FacturaRepositoryPort {
     }
 
 
+
     private RowMapper<Factura> facturaRowMapper() {
         return (rs, rowNum) -> {
             Timestamp fechaEmisionTs = rs.getTimestamp("fecha_emision");
@@ -123,7 +130,7 @@ public class FacturaDwhRepositoryImpl implements FacturaRepositoryPort {
             return new Factura(
                     fechaEmisionTs != null ? fechaEmisionTs.toLocalDateTime() : null,
                     fechaSriTs != null ? fechaSriTs.toLocalDateTime() : null,
-                    rs.getInt("id_fact_facturas"),
+                    rs.getInt("id_dim_cliente"),
                     rs.getString("establecimiento"),
                     rs.getString("autorizacion"),
                     rs.getString("numero_transito"),

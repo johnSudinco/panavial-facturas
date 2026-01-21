@@ -13,8 +13,8 @@ import lombok.Setter;
 public class FacturaEntity {
 
     @Id
-    @Column(name = "id_fact_facturas")
-    private Integer idFactFacturas;
+    @Column(name = "id_dim_cliente")
+    private Integer idDimCliente;
 
     @Column(name = "fecha_emision")
     private LocalDateTime fechaEmision;

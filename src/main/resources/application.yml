@@ -2,8 +2,8 @@ spring:
   datasource:
     postgres:
       jdbc-url: jdbc:postgresql://192.168.89.34:5432/sudinco
-      username: data.audit
-      password: '%hCwA]D*JpC\F$iP3+'
+      username: core.user.back
+      password: 'w>gWo2U8Ux0}R@'
       driver-class-name: org.postgresql.Driver
 
     mysql:

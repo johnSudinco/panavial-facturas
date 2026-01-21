@@ -29,7 +29,12 @@ public class FacturaController {
     public ResponseEntity<List<FacturaResponse>> misFacturas(
             @RequestParam(required = false)
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-            LocalDate fecha,
+            LocalDate fechaInicio,
+
+            @RequestParam(required = false)
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+            LocalDate fechaFin,
+
             Authentication authentication
     ) {
         if (authentication == null ||
@@ -40,23 +45,17 @@ public class FacturaController {
         boolean isAdmin = authentication.getAuthorities().stream()
                 .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
 
-        if (isAdmin) {
-            if (fecha == null) {
-                return ResponseEntity
-                        .badRequest()
-                        .body(List.of()); // o mensaje de error
-            }
+        String ruc = isAdmin ? null : user.identification();
 
+        try {
             return ResponseEntity.ok(
-                    useCase.execute(null, fecha)
+                    useCase.execute(ruc, fechaInicio, fechaFin)
             );
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(List.of());
         }
-
-        // USER
-        return ResponseEntity.ok(
-                useCase.execute(user.identification(), fecha)
-        );
     }
-
-
 }
+

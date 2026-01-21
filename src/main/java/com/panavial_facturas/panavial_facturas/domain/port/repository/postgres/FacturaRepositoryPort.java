@@ -10,11 +10,13 @@ public interface FacturaRepositoryPort {
     // USER
     List<Factura> findByRucAndFecha(
             String ruc,
-            LocalDate fechaEmision
+            LocalDate fechaInicio,
+            LocalDate fechaFin
     );
 
     // ADMIN
     List<Factura> findByFecha(
-            LocalDate fechaEmision
+            LocalDate fechaInicio,
+            LocalDate fechaFin
     );
 }
