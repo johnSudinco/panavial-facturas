@@ -1,0 +1,47 @@
+2026-01-22T15:01:26.038-05:00  INFO 1144 --- [restartedMain] c.p.p.PanavialFacturasApplication        : Starting PanavialFacturasApplication using Java 17.0.12 with PID 1144 (C:\Users\john.arboleda\Documents\DESARROLLO\SPRING BOOT\panavial-facturas\target\classes started by john.arboleda in C:\Users\john.arboleda\Documents\DESARROLLO\SPRING BOOT\panavial-facturas)
+2026-01-22T15:01:26.038-05:00  INFO 1144 --- [restartedMain] c.p.p.PanavialFacturasApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-01-22T15:01:26.173-05:00  INFO 1144 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-22T15:01:26.175-05:00  INFO 1144 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2026-01-22T15:01:26.176-05:00  INFO 1144 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-22T15:01:26.180-05:00  INFO 1144 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 1 JPA repository interface.
+2026-01-22T15:01:26.320-05:00  INFO 1144 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9092 (http)
+2026-01-22T15:01:26.320-05:00  INFO 1144 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-22T15:01:26.320-05:00  INFO 1144 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-01-22T15:01:26.339-05:00  INFO 1144 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-22T15:01:26.340-05:00  INFO 1144 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 300 ms
+2026-01-22T15:01:26.364-05:00  INFO 1144 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2026-01-22T15:01:26.382-05:00  INFO 1144 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@246303f3
+2026-01-22T15:01:26.382-05:00  INFO 1144 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2026-01-22T15:01:26.383-05:00  INFO 1144 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2026-01-22T15:01:26.410-05:00  INFO 1144 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection org.postgresql.jdbc.PgConnection@25b7a04
+2026-01-22T15:01:26.410-05:00  INFO 1144 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2026-01-22T15:01:26.411-05:00  INFO 1144 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Databases available at 'jdbc:mysql://192.168.61.9:3306/consultaWeb', 'jdbc:postgresql://192.168.89.34:5432/sudinco'
+2026-01-22T15:01:26.441-05:00  INFO 1144 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: mysql]
+2026-01-22T15:01:26.443-05:00  INFO 1144 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-01-22T15:01:26.493-05:00  INFO 1144 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-22T15:01:26.528-05:00  INFO 1144 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-22T15:01:26.529-05:00  INFO 1144 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'mysql'
+2026-01-22T15:01:26.536-05:00  INFO 1144 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: postgres]
+2026-01-22T15:01:26.538-05:00  INFO 1144 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-01-22T15:01:26.565-05:00  INFO 1144 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-22T15:01:26.603-05:00  INFO 1144 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-22T15:01:26.604-05:00  INFO 1144 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'postgres'
+2026-01-22T15:01:26.717-05:00  WARN 1144 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-22T15:01:26.730-05:00  WARN 1144 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: f9d8bb86-821b-4b1a-b56f-e41ee71fc367
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-01-22T15:01:26.732-05:00  INFO 1144 --- [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-01-22T15:01:26.897-05:00  INFO 1144 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-01-22T15:01:26.905-05:00  INFO 1144 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9092 (http) with context path '/'
+2026-01-22T15:01:26.909-05:00  INFO 1144 --- [restartedMain] c.p.p.PanavialFacturasApplication        : Started PanavialFacturasApplication in 0.899 seconds (process running for 213.402)
+2026-01-22T15:01:26.911-05:00  INFO 1144 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2026-01-22T15:19:29.386-05:00  INFO 1144 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2026-01-22T15:19:29.461-05:00  INFO 1144 --- [Thread-9] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'postgres'
+2026-01-22T15:19:29.461-05:00  INFO 1144 --- [Thread-9] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'mysql'
+2026-01-22T15:19:29.461-05:00  INFO 1144 --- [Thread-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2026-01-22T15:19:29.461-05:00  INFO 1144 --- [Thread-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2026-01-22T15:19:29.461-05:00  INFO 1144 --- [Thread-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2026-01-22T15:19:29.473-05:00  INFO 1144 --- [Thread-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
