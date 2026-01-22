@@ -168,3 +168,45 @@ java.lang.NullPointerException: Cannot invoke "java.time.LocalDate.plusDays(long
 2026-01-22 15:33:11 INFO  [Thread-5] com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
 2026-01-22 15:33:11 INFO  [Thread-5] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2026-01-22 15:33:11 INFO  [Thread-5] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-01-22 15:33:11 INFO  [restartedMain] c.p.p.PanavialFacturasApplication - Starting PanavialFacturasApplication using Java 17.0.12 with PID 19216 (C:\Users\john.arboleda\Documents\DESARROLLO\SPRING BOOT\panavial-facturas\target\classes started by john.arboleda in C:\Users\john.arboleda\Documents\DESARROLLO\SPRING BOOT\panavial-facturas)
+2026-01-22 15:33:11 INFO  [restartedMain] c.p.p.PanavialFacturasApplication - No active profile set, falling back to 1 default profile: "default"
+2026-01-22 15:33:11 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-22 15:33:11 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 0 ms. Found 0 JPA repository interfaces.
+2026-01-22 15:33:11 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-22 15:33:11 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 3 ms. Found 1 JPA repository interface.
+2026-01-22 15:33:11 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 9092 (http)
+2026-01-22 15:33:11 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9092"]
+2026-01-22 15:33:11 INFO  [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-01-22 15:33:11 INFO  [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-01-22 15:33:11 INFO  [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-01-22 15:33:11 INFO  [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 308 ms
+2026-01-22 15:33:11 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+2026-01-22 15:33:11 INFO  [restartedMain] com.zaxxer.hikari.pool.HikariPool - HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@c5dc603
+2026-01-22 15:33:11 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+2026-01-22 15:33:11 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Starting...
+2026-01-22 15:33:11 INFO  [restartedMain] com.zaxxer.hikari.pool.HikariPool - HikariPool-4 - Added connection org.postgresql.jdbc.PgConnection@620dc9f0
+2026-01-22 15:33:11 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Start completed.
+2026-01-22 15:33:11 INFO  [restartedMain] o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Databases available at 'jdbc:mysql://192.168.61.9:3306/consultaWeb', 'jdbc:postgresql://192.168.89.34:5432/sudinco'
+2026-01-22 15:33:11 INFO  [restartedMain] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: mysql]
+2026-01-22 15:33:11 INFO  [restartedMain] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-01-22 15:33:11 INFO  [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-22 15:33:11 INFO  [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-22 15:33:11 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'mysql'
+2026-01-22 15:33:11 INFO  [restartedMain] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: postgres]
+2026-01-22 15:33:11 INFO  [restartedMain] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-01-22 15:33:11 INFO  [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-22 15:33:11 INFO  [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-22 15:33:11 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'postgres'
+2026-01-22 15:33:12 WARN  [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-22 15:33:12 WARN  [restartedMain] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 1482ac43-222b-4d22-a3c9-13678278e815
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-01-22 15:33:12 INFO  [restartedMain] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-01-22 15:33:12 INFO  [restartedMain] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-01-22 15:33:12 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9092"]
+2026-01-22 15:33:12 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 9092 (http) with context path '/'
+2026-01-22 15:33:12 INFO  [restartedMain] c.p.p.PanavialFacturasApplication - Started PanavialFacturasApplication in 0.861 seconds (process running for 125.009)
+2026-01-22 15:33:12 INFO  [restartedMain] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
